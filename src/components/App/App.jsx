@@ -1,15 +1,8 @@
-import {
-  Container,
-  Grid,
-  GridItem,
-  Header,
-  SearchForm,
-  Section,
-  Text,
-  Todo,
-} from 'components';
+import { Container, Header, SearchForm, Section, Text } from 'components';
 import { useSelector } from 'react-redux';
 import { selectTodos } from '../../redux/selector';
+import TodoList from 'components/TodoList/TodoList';
+import Filter from 'components/Filter/Filter';
 
 export const App = () => {
   const todos = useSelector(selectTodos);
@@ -21,18 +14,14 @@ export const App = () => {
         <Container>
           <SearchForm />
 
-          {todos.length === 0 && (
+          {todos.length === 0 ? (
             <Text textAlign="center">There are no any todos ... </Text>
+          ) : (
+            <>
+              <Filter />
+              <TodoList />
+            </>
           )}
-
-          <Grid>
-            {todos.length > 0 &&
-              todos.map((todo, index) => (
-                <GridItem key={todo.id}>
-                  <Todo id={todo.id} text={todo.text} counter={index + 1} />
-                </GridItem>
-              ))}
-          </Grid>
         </Container>
       </Section>
     </>
