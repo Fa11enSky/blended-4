@@ -5,7 +5,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../redux/todoSlice';
 
-export const SearchForm = ({ onSubmit }) => {
+export const SearchForm = () => {
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
 
